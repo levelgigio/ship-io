@@ -15,7 +15,7 @@ let horse_json = `{
                 "width": 192, 
                 "height": 144
             },
-            "animation_velocity": 2000
+            "animation_velocity": 1000
         },
         "horse_run": {
             "frames": [
