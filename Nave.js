@@ -1,6 +1,8 @@
-function Sprite(json) {
-    this.x = 20;
-    this.y = 20;
+function Nave(json) {
+    this.window_x = 20;
+    this.window_y = 20;
+    this.game_y = 0;
+    this.gas = 20;
     this.json = jQuery.parseJSON(json);
     this.img_div = document.getElementById(this.json.object_name);
     this.continuous = false;
@@ -38,6 +40,16 @@ function Sprite(json) {
  
         }, this.json.animations[this.current_animation].animation_velocity/this.json.animations[this.current_animation].frames.length);
         
+    }
+    
+    this.subir = function() {
+        this.animate("horse_jump");
+        this.game_y++;
+    }
+    
+    this.descer = function() {
+        this.animate("horse_bend");
+        this.game_y--;
     }
     
 }

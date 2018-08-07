@@ -32,6 +32,19 @@ let horse_json = `{
                 "height": 144
             },
             "animation_velocity": 1000
+        },
+        "horse_bend": {
+            "frames": [
+                {   "file": "./Horse/horse-bend-00.png"   }, 
+                {   "file": "./Horse/horse-bend-01.png"   },
+                {   "file": "./Horse/horse-bend-02.png"   },
+                {   "file": "./Horse/horse-bend-03.png"   }
+            ],
+            "source_size": {
+                "width": 192, 
+                "height": 144
+            },
+            "animation_velocity": 1000
         }
     }
 }`;
