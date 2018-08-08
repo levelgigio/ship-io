@@ -1,6 +1,8 @@
 function Nave(json) {
     this.window_x = 20;
     this.window_y = 20;
+    
+    
     this.game_y = 0;
     this.gas = 20;
     this.json = jQuery.parseJSON(json);

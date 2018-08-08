@@ -14,8 +14,6 @@ function Pool() {
         else if(movem === "descer")
             this._descer += quant;
         
-        console.log("pool status:::: subir - " + this._subir + ":::: descer - " + this._descer);
-        
         this.show();
     }
     
@@ -37,5 +35,8 @@ function Pool() {
         this._nave = nave;
     }
     
+    
+    
+
     this.show();
 }
