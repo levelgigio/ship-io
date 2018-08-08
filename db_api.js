@@ -1,18 +1,20 @@
 var mongo = require('mongodb').MongoClient;
 
 function iniciarPool() {
-    mongo.connect('mongodb://localhost:27017/', (err, db) => {
+    mongo.connect('mongodb://admin:admin123@ds215822.mlab.com:15822/prizeship_io', (err, db) => {
         if(err)
             console.log("error: ", err);
         else 
-            db.db('votacao').collection('votos').update({object: "pool"}, {$set: {sim: 0, nao: 0}}, {upsert: true}, (err, result) => {
+            /*db.db('votacao').collection('votos').update({object: "pool"}, {$set: {sim: 0, nao: 0}}, {upsert: true}, (err, result) => {
                 if(err)
                     console.log("erro: ", err);
                 else
-                    console.log("resultado: ", result);
+                    console.log("resultado: ", result);*/
+        
+            console.log("db", db.getUsers());
                 db.close();
-            })
-    })
+            });
+   // })
 }
 
 iniciarPool();

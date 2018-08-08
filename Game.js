@@ -46,7 +46,7 @@ function Game() {
     var obj = this;
     this.countdown_timer = function() {
         now = new Date().getTime();
-        distance = 100000 + obj._reference_24h_date.getTime() - now;
+        distance = 15000 + obj._reference_24h_date.getTime() - now;
         if(distance <= 0){
             obj.pool.reset_pool(); 
             obj.set_reference_24h_date(new Date());
@@ -70,9 +70,7 @@ function Game() {
 
     }
 
-    this.update = function() {
 
-    }
     
     
     

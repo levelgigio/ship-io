@@ -4,7 +4,8 @@ function Nave(json) {
     
     
     this.game_y = 0;
-    this.gas = 20;
+    this.gas_padrao = 20;
+    this.gas_extra = 0;
     this.json = jQuery.parseJSON(json);
     this.img_div = document.getElementById(this.json.object_name);
     this.continuous = false;
@@ -34,6 +35,20 @@ function Nave(json) {
         this.animation_interval = setInterval(function() {
             object.img_div.src = object.json.animations[object.current_animation].frames[object.current_frame].file;
             object.current_frame = (object.current_frame+1)%object.json.animations[object.current_animation].frames.length;
+            
+            
+            //apenas para nave que so sobe e desce
+            if(object.current_animation === "horse_jump")
+                object.game_y += (object.gas_padrao + object.gas_extra)/object.json.animations[object.current_animation].frames.length;
+            else if(object.current_animation === "horse_bend")
+                object.game_y -= (object.gas_padrao + object.gas_extra)/object.json.animations[object.current_animation].frames.length;
+            
+            
+            object.update();
+            console.log(object.get_altitude());
+            //------------------------------------
+            
+            
             if(!object.current_frame) 
                 if(!object.continuous)
                     clearInterval(object.animation_interval);
@@ -44,14 +59,26 @@ function Nave(json) {
         
     }
     
+    this.extra_gas = function(valor) {
+        this.gas_extra = valor;
+    }
+    
+    this.get_altitude = function() {
+        return this.game_y;
+    }
+    
     this.subir = function() {
         this.animate("horse_jump");
-        this.game_y++;
+        this.gas_extra = 0;
     }
     
     this.descer = function() {
         this.animate("horse_bend");
-        this.game_y--;
+        this.gas_extra = 0;
+    }
+    
+    this.update = function() {
+        $("#altitude-nave").text("Altitude nave: " + Math.floor(this.get_altitude() + 0.99999999));
     }
     
 }
